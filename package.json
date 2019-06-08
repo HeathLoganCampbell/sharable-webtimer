@@ -7,7 +7,7 @@
 		"clean": "rm -rf build && mkdir build",
 		"build-babel": "babel -d ./build ./src -s --ignore 'node_modules/*'",
 		"build": "npm run clean && npm run build-babel",
-		"start": "npm run build && node ./bin/www "
+		"start": "node ./bin/www "
 	},
 	"dependencies": {
 		"cookie-parser": "~1.4.3",
