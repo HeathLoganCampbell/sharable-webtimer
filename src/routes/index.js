@@ -1,4 +1,4 @@
-import express from "express";
+import * as express from "express";
 import TimeController from "../parser/time";
 var router = express.Router();
 
@@ -45,7 +45,7 @@ router.get(/^\/(\d?\d[ywdhms]+)$/, function (req, res, next) {
 	console.log(req.params[0])
 	// TimeController
 
-	res.render("index", { title: "timer", seconds: seconds });
+	res.render("clock", { title: "timer", seconds: seconds });
 });
 
 router.get("/", function (req, res, next) {
@@ -62,7 +62,7 @@ router.get("/", function (req, res, next) {
 	console.log(req.params[0])
 	// TimeController
 
-	res.render("home");
+	res.render("index");
 });
 
 // router.get("/", function (req, res, next) {

@@ -1,25 +1,11 @@
 <!DOCTYPE html>
 <html>
+	<head>
+		<title>Timer</title>
+		<link rel="stylesheet" href="/stylesheets/style.css" />
+	</head>
 
-<head>
-	<title><%= title %></title>
-	<link rel="stylesheet" href="/stylesheets/style.css" />
-</head>
-
-<body>
-	<h1><%= title %></h1>
-	<p id="timer"></p>
-</body>
-
-<script>
-	var seconds = "<%= seconds %>";
-	seconds = Number(seconds);
-	var timerEle = document.getElementById("timer");
-	timerEle.innerHTML = seconds;
-
-	setInterval(() => {
-		timerEle.innerHTML = --seconds;
-	}, 1000);
-</script>
-
+	<body>
+		<h1>Hello!</h1>
+	</body>
 </html>
