@@ -4,6 +4,7 @@
  * Module dependencies.
  */
 var srcPath = "../build/app"
+console.log(process.env.NODE_ENV)
 if (process.env.NODE_ENV) {
 	srcPath = "../src/app";
 	console.log("======= Running in developer mode =======")
