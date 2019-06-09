@@ -1,4 +1,4 @@
-import * as express from "express";
+import express from "express";
 import TimeController from "../parser/time";
 var router = express.Router();
 
