@@ -3,7 +3,7 @@
 	"version": "0.0.0",
 	"private": true,
 	"scripts": {
-		"dev": "nodemon ./bin/www --exec babel-node --presets babel-preset-env",
+		"dev": "nodemon ./bin/www --exec babel-node --presets babel-preset-env ",
 		"clean": "rm -rf build && mkdir build",
 		"build-babel": "babel -d ./build ./src -s --ignore 'node_modules/*'",
 		"build": "npm run clean && npm run build-babel",
