@@ -22,6 +22,7 @@
 			
 			const content = toTimerString(secondsLeft);
 			setTimerContents(content);
+			document.title = secondsLeft % 2 == 0 ? content.replace(/:/g, " ") : content;
 		}, 500);
 	</script>
 </html>
