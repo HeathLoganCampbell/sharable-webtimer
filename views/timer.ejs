@@ -9,17 +9,8 @@
 		</script>
 	</head>
 	<body>
-		<p id="timer"></p>
-		<hr>
-		<p>
-			You can start the timer by entering your time in the url.
-		</p>
-		<p>
-			Examples: <br>
-			<a href="https://sharable-webtimer.herokuapp.com/1h">sharable-webtimer.herokuapp.com/1h</a> will start a timer for 1 hour <br>
-			<a href="https://sharable-webtimer.herokuapp.com/1h20m">sharable-webtimer.herokuapp.com/1h20m</a> will start a timer for 1 hour and 20 minutes <br>
-			<a href="https://sharable-webtimer.herokuapp.com/3w">sharable-webtimer.herokuapp.com/3w</a> will start a timer for 3 weeks <br>
-		</p>
+		<h1 id="timer"></h1>
+		<%- include('includes/examples'); -%>
 	</body>
 	<script src="/javascripts/timer.js"></script>
 	<script>
