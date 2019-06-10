@@ -11,11 +11,13 @@ Example:
 cookie, cow, milk and ice cream
 */
 function toFormatedListAnd(array) {
-    var lastIndex = array.length - 1;
-    var secondLastIndex = lastIndex - 1;
-    array[secondLastIndex] = array[secondLastIndex] + " and " + array[lastIndex];
-    delete array[lastIndex];
-    return array.join(", ")
+    if (array.length > 1) {
+        var lastIndex = array.length - 1;
+        var secondLastIndex = lastIndex - 1;
+        array[secondLastIndex] = array[secondLastIndex] + " and " + array[lastIndex];
+        array.pop();
+    }
+    return array.join(", ");
 }
 
 /** 
@@ -109,6 +111,13 @@ function toTimerString(rawSeconds) {
 
 function setTimerContents(value) {
     var timerEle = document.getElementById("timer");
+    if (timerEle !== undefined)
+        timerEle.innerHTML = value;
+}
+
+
+function seTimerSetForContents(value) {
+    var timerEle = document.getElementById("timerSetFor");
     if (timerEle !== undefined)
         timerEle.innerHTML = value;
 }

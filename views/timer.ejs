@@ -9,12 +9,14 @@
 		</script>
 	</head>
 	<body>
+		<h1 id="timerSetFor"></h1>
 		<h1 id="timer"></h1>
 		<%- include('includes/examples'); -%>
 	</body>
 	<script src="/javascripts/timer.js"></script>
 	<script>
 		//current timestamp
+		seTimerSetForContents("Starting timer at " + toFormatedString(startSeconds))
 		setInterval(() => {
 			const currentTimestamp = new Date().getTime();
 			const diffTimestampSeconds = ((currentTimestamp - startTimestamp) / 1000) | 0;
