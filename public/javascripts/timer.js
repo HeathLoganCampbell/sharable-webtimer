@@ -4,9 +4,6 @@ const HOURS_IN_DAY = 24;
 const DAYS_IN_WEEK = 7;
 const DAYS_IN_YEAR = 365;
 
-
-
-
 /**
 The last item has an and
 Example:

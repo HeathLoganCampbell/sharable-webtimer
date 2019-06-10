@@ -27,17 +27,34 @@ var timeType = [
         symbol: "m",
         toSeconds: 60
     },
+    {
+        name: "seconds",
+        symbol: "s",
+        toSeconds: 1
+    },
 ];
 
 /* GET home page. */
-router.get(/^\/(\d?\d[ywdhms]+)$/, function (req, res, next) {
+router.get(/^\/(\d?\d[ywdhms])+$/, function (req, res, next) {
 
-    var seconds = 10;
+
+    var requestString = req.originalUrl.substring(1);
+    var seconds = 0;
+
     for (var i = 0; i < timeType.length; i++) {
         var type = timeType[i];
-    }
+        var amount = 0;
+        var re = new RegExp('(\\d)+' + type.symbol, 'gi');
+        var matches = [...requestString.matchAll(re)];
+        if (matches === undefined || matches === null) continue;
 
-    console.log(req.params[0])
+        for (var j = 0; j < matches.length; j++) {
+            var amount = parseInt(matches[j][0]);
+            if (amount !== NaN)
+                seconds += type.toSeconds * amount;
+        }
+
+    }
 
     res.render("timer", { seconds: seconds });
 });
