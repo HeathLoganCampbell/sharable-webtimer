@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Timer</title>
+		<link rel="stylesheet" href="/stylesheets/style.css" />
+		<script>
+			const startSeconds = <%= seconds %>;
+			const startTimestamp = new Date().getTime();
+		</script>
+	</head>
+	<body>
+		<p id="timer"></p>
+	</body>
+	<script src="/javascripts/timer.js"></script>
+	<script>
+		//current timestamp
+		setInterval(() => {
+			const currentTimestamp = new Date().getTime();
+			const diffTimestampSeconds = ((currentTimestamp - startTimestamp) / 1000) | 0;
+			var secondsLeft = startSeconds - diffTimestampSeconds;
+			if(secondsLeft < 0) secondsLeft = 0;
+			
+			const content = toTimerString(secondsLeft);
+			setTimerContents(content);
+		}, 500);
+	</script>
+</html>
