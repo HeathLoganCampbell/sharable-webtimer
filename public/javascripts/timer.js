@@ -116,8 +116,54 @@ function setTimerContents(value) {
 }
 
 
-function seTimerSetForContents(value) {
+function setTimerSetForContents(value) {
     var timerEle = document.getElementById("timerSetFor");
     if (timerEle !== undefined)
         timerEle.innerHTML = value;
+}
+
+class FavProgress {
+    constructor(currentSeconds, maxSeconds) {
+        this.currentSeconds = currentSeconds;
+        this.maxSeconds = maxSeconds;
+        this.percent = this.currentSeconds / this.maxSeconds;
+
+        this.linkEl = document.createElement('link');
+        this.linkEl.rel = 'icon';
+        document.head.appendChild(this.linkEl);
+
+        this.canvas = document.createElement('canvas');
+        this.canvas.width = this.canvas.height = 32;
+        this.context = this.canvas.getContext('2d');
+
+        this.linkEl.href = this.canvas.toDataURL('image/png');
+    }
+
+    update(currentSeconds) {
+        this.currentSeconds = currentSeconds;
+        this.percent = this.currentSeconds / this.maxSeconds;
+        this.render();
+    }
+
+    render() {
+        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.renderChart(this.percent);
+        this.linkEl.href = this.canvas.toDataURL('image/png');
+    }
+
+    renderChart(percentage) {
+        var context = this.context;
+        var center = this.canvas.width / 2;
+
+        var startAngle = Math.PI / 2;
+        var endAngle = startAngle - Math.PI * 2 * percentage;
+
+        context.fillStyle = '#27ae60';
+        context.beginPath();
+        context.moveTo(center, center);
+        context.arc(center, center, center, endAngle, startAngle, false);
+        context.lineTo(center, center);
+        context.closePath();
+        context.fill();
+    }
 }

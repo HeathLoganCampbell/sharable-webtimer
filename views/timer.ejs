@@ -3,6 +3,7 @@
 	<head>
 		<title>Timer</title>
 		<link rel="stylesheet" href="/stylesheets/style.css" />
+		<link id="favicon" rel="icon" href="0.png" type="image/png" sizes="16x16">
 		<script>
 			const startSeconds = <%= seconds %>;
 			const startTimestamp = new Date().getTime();
@@ -16,14 +17,19 @@
 	<script src="/javascripts/timer.js"></script>
 	<script>
 		//current timestamp
-		seTimerSetForContents("Starting timer at " + toFormatedString(startSeconds))
+		var favicon = new FavProgress(startSeconds, startSeconds);
+		favicon.update(startSeconds);
+
+		setTimerSetForContents("Starting timer at " + toFormatedString(startSeconds))
 		setInterval(() => {
 			const currentTimestamp = new Date().getTime();
 			const diffTimestampSeconds = ((currentTimestamp - startTimestamp) / 1000) | 0;
 			var secondsLeft = startSeconds - diffTimestampSeconds;
 			if(secondsLeft < 0) secondsLeft = 0;
 			
+			favicon.update(secondsLeft);
 			const content = toTimerString(secondsLeft);
+			
 			setTimerContents(content);
 			document.title = secondsLeft % 2 == 0 ? content.replace(/:/g, " ") : content;
 		}, 500);

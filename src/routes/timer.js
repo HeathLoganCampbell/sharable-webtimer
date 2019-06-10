@@ -36,7 +36,7 @@ var timeType = [
 ];
 
 /* GET home page. */
-router.get(/^\/((\d+)?\d[ywdhms])+$/, function (req, res, next) {
+router.get(/^\/((\d+)[ywdhms])+$/, function (req, res, next) {
 
 
     var requestString = req.originalUrl.substring(1);
