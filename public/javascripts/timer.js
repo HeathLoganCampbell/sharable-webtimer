@@ -170,8 +170,3 @@ class FavProgress {
         context.fill();
     }
 }
-
-
-function LinearInterpolation(startingColor, endingColor, weight) {
-
-} 

@@ -13,6 +13,9 @@
 		<h1 id="timerSetFor"></h1>
 		<h1 id="timer"></h1>
 		<%- include('includes/examples'); -%>
+		<audio preload="auto" id="endTimeSound">
+			<source src="audio/alarm.mp3" type="audio/mpeg">
+		</audio>
 	</body>
 	<script src="/javascripts/timer.js"></script>
 	<script>
@@ -25,6 +28,7 @@
 			const currentTimestamp = new Date().getTime();
 			const diffTimestampSeconds = ((currentTimestamp - startTimestamp) / 1000) | 0;
 			var secondsLeft = startSeconds - diffTimestampSeconds;
+			if(secondsLeft == 0) document.getElementById("endTimeSound").play();
 			if(secondsLeft < 0) secondsLeft = 0;
 			
 			favicon.update(secondsLeft);
