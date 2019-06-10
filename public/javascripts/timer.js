@@ -158,7 +158,10 @@ class FavProgress {
         var startAngle = Math.PI / 2;
         var endAngle = startAngle - Math.PI * 2 * percentage;
 
-        context.fillStyle = '#27ae60';
+        var colorOne = { R: 231, G: 76, B: 60 }
+        var colorTwo = { R: 46, G: 204, B: 113 }
+
+        context.fillStyle = 'rgb(' + (colorOne.R + ((colorTwo.R - colorOne.R) * percentage)) + ', ' + (colorOne.G + ((colorTwo.G - colorOne.G) * percentage)) + ', ' + (colorOne.B + ((colorTwo.B - colorOne.B) * percentage)) + ')';
         context.beginPath();
         context.moveTo(center, center);
         context.arc(center, center, center, endAngle, startAngle, false);
@@ -167,3 +170,8 @@ class FavProgress {
         context.fill();
     }
 }
+
+
+function LinearInterpolation(startingColor, endingColor, weight) {
+
+} 
