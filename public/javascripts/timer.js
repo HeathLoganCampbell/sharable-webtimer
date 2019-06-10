@@ -3,6 +3,7 @@ const MINS_IN_HOUR = 60;
 const HOURS_IN_DAY = 24;
 const DAYS_IN_WEEK = 7;
 const DAYS_IN_YEAR = 365;
+const WEEKS_IN_YEAR = 52;
 
 /**
 The last item has an and
@@ -27,13 +28,13 @@ function secondsToUnits(rawSeconds) {
     var rawHours = (rawMinutes / MINS_IN_HOUR) | 0;
     var rawDays = (rawHours / HOURS_IN_DAY) | 0;
     var rawWeeks = (rawDays / DAYS_IN_WEEK) | 0;
-    var rawYears = (rawDays / DAYS_IN_YEAR) | 0;
+    var rawYears = (rawWeeks / WEEKS_IN_YEAR) | 0;
 
     var seconds = rawSeconds % SEC_IN_MINS;
     var minutes = rawMinutes % MINS_IN_HOUR;
     var hours = rawHours % HOURS_IN_DAY;
     var days = rawDays % DAYS_IN_WEEK;
-    var weeks = rawWeeks % DAYS_IN_YEAR;
+    var weeks = (rawWeeks) % WEEKS_IN_YEAR;
     var years = rawYears;
 
     return {
