@@ -97,7 +97,7 @@ function toTimerString(rawSeconds) {
     if (days > 0 || weeks > 0 || years > 0) {
         currentCount += doubleDigit(years) + ":"
         currentCount += doubleDigit(weeks) + ":"
-        currentCount += doubleDigit(days) + ","
+        currentCount += doubleDigit(days) + "|"
     }
 
     currentCount += doubleDigit(hours) + ":"
