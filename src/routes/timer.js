@@ -1,4 +1,5 @@
 import express from "express";
+import matchAll from "string.prototype.matchall";
 var router = express.Router();
 
 var timeType = [
@@ -45,7 +46,7 @@ router.get(/^\/(\d?\d[ywdhms])+$/, function (req, res, next) {
         var type = timeType[i];
         var amount = 0;
         var re = new RegExp('(\\d)+' + type.symbol, 'gi');
-        var matches = [...requestString.matchAll(re)];
+        var matches = [...matchAll(requestString, re)];
         if (matches === undefined || matches === null) continue;
 
         for (var j = 0; j < matches.length; j++) {
