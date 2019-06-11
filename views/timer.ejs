@@ -23,17 +23,28 @@
 
 		setTimerSetForContents("Starting timer at " + toFormatedString(startSeconds))
 		setInterval(() => {
+			var title = "Timer";
 			const currentTimestamp = new Date().getTime();
 			const diffTimestampSeconds = ((currentTimestamp - startTimestamp) / 1000) | 0;
 			var secondsLeft = startSeconds - diffTimestampSeconds;
-			if(secondsLeft == 0) document.getElementById("endTimeSound").play();
-			if(secondsLeft < 0) secondsLeft = 0;
+			if(secondsLeft == 0) 
+				document.getElementById("endTimeSound").play();
+			if(secondsLeft <= 0) 
+			{
+				title = secondsLeft % 2 == 0 ? "! Time is up !" : "| Timer finished |"
+				secondsLeft = 0;
+			}
 			
 			favicon.update(secondsLeft);
 			const content = toTimerString(secondsLeft);
+
+			if(secondsLeft > 0)
+			{
+				title = secondsLeft % 2 == 0 ? content.replace(/:/g, " ") : content;
+			}
 			
 			setTimerContents(content);
-			document.title = secondsLeft % 2 == 0 ? content.replace(/:/g, " ") : content;
+			document.title = title
 		}, 500);
 	</script>
 </html>
